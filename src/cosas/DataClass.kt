@@ -1,8 +1,8 @@
 package cosas
 
-data class Point(val x: Int, val y: Int)
+data class Punto(val x: Int, val y: Int)
 
 fun main() {
-    val a = Point(1, 32)
+    val a = Punto(1, 32)
     println(a)
 }
