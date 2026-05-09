@@ -14,8 +14,8 @@ fun main() {
     }
     println("Su factorial es: ${factorial(num)}")
 }
-fun factorial(a: Int): Int {
-    if (a===0 || a===1){
+private fun factorial(a: Int): Int {
+    if (a==0 || a==1){
         return 1;
     } else if (a>1){
         return a*(factorial(a-1))
