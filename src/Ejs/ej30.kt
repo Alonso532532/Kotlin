@@ -1,5 +1,0 @@
-package Ejs
-
-fun main(){
-
-}
