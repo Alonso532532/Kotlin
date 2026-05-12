@@ -55,7 +55,6 @@ fun main(){
                 if (lista.isNotEmpty()) {
                     while (true) {
                         lista.forEachIndexed { index, estudiante -> print("${index + 1} - $estudiante\n") }
-                        println()
                         print("¿Cual quieres elminar?\n> ")
                         val pos = (readLine() ?: return).toInt()
                         if (lista.size < pos || pos < 1) {
@@ -75,14 +74,44 @@ fun main(){
                 if (lista.isNotEmpty()) {
                     while (true) {
                         lista.forEachIndexed { index, estudiante -> print("${index + 1} - $estudiante\n") }
-                        println()
                         print("¿Cual quieres modificar?\n> ")
                         val pos = (readLine() ?: return).toInt()
                         if (lista.size < pos || pos < 1) {
                             println("Posición incorrecta")
                             continue
                         }
-                        lista.removeAt(pos - 1)
+                        print("Nuevo nombre\n> ")
+                        val nombre = readLine()?: return
+
+                        var nota = 0.0
+                        while (true){
+                            print("Nueva nota\n> ")
+                            try {
+                                nota = (readLine()?: return).toDouble()
+                                if (nota>10 || nota<0){
+                                    println("La nota no puede ser superior a 10 o negativa")
+                                }else break
+                            }catch (e: NumberFormatException){
+                                println("Formato inválido")
+                            }
+                        }
+
+                        var aprobado = "n"
+                        while (true){
+                            print("Nuevo aprobado S/N\n> ")
+                            val siNo = readLine()
+                            if (siNo == "s" || siNo == "S"){
+                                aprobado="s"
+                                break
+                            } else if (siNo == "n" || siNo == "N"){
+                                aprobado="n"
+                                break
+                            }else{
+                                println("Formato inválido")
+                            }
+                        }
+
+                        lista[pos-1] = Estudiante(nombre, nota, aprobado=="s")
                         break
                     }
                 }else{
